@@ -524,9 +524,6 @@ function StartAutofarm()
 	if game:GetService("ReplicatedStorage").wkspc.Status.LastGamemode.Value:lower():find("hackula") then ServerHop() return end
 	
 	Farming = true
-	print("running")
-
-
 
 	spawn(function()
 		repeat
@@ -561,19 +558,9 @@ function StartAutofarm()
 		until game:GetService("ReplicatedStorage").wkspc.Status.RoundOver.Value == true
 
 		wait(1.3)
-		print("f")
 	end)
 end
 
-
-
-spawn(function()
-	while wait(0.5) do
-		if game:GetService("Players").LocalPlayer.NRPBS.Health.Value <= 0 and game:GetService("Players").LocalPlayer.Status.Team.Value ~= "Spectator" then
-			print("l")
-		end
-	end
-end)
 local num = 6
 local up = 0
 game:GetService("RunService").RenderStepped:Connect(function()
@@ -609,24 +596,10 @@ StartAutofarm()
 for i,v in next, game.ReplicatedStorage.Weapons:GetChildren() do
 for i,c in next, v:GetChildren() do 
 for i,x in next, getconnections(c.Changed) do
-x:Disable() -- probably not needed
-end
-if c.Name == "Ammo" or c.Name == "StoredAmmo" then
-print("l")
-elseif c.Name == "AReload" or c.Name == "RecoilControl" or c.Name == "EReload" or c.Name == "SReload" or c.Name == "ReloadTime" or c.Name == "EquipTime" or c.Name == "Spread" or c.Name == "MaxSpread" then
-print("l")
-elseif c.Name == "Range" then
-print("l")
-elseif c.Name == "Auto" then
-print("l")
-elseif c.Name == "FireRate" or c.Name == "BFireRate" then
-print("l")
+x:Disable()
 end
 end
 end
-game:GetService('RunService').Stepped:connect(function()
-        print("l")
-        end)
     else
         game:GetService("ReplicatedStorage").wkspc.Status.RoundOver.Value = true
 end
