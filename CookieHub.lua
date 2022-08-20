@@ -664,12 +664,12 @@ CombatTab:AddToggle({
 	Name = "Semi-Wallbang",
 	Default = false,
 	Callback = function(Value)
-		_G.SemiWallbang = Value 
-		while _G.SemiWallbang do
-			local WallBangHook = loadstring(game:HttpGetAsync("https://pastebin.com/raw/3cCyS6GF"))()
-			WallBangHook:HookIndex("Clips",function()end,workspace.Map)
-			wait(27)
-		end
+		OrionLib:MakeNotification({
+			Name = "!WARNING!",
+			Content = "This function IS PATHCED DUE to BANS ON OUR TEST ACCOUNTS! WAIT FOR UNPATCH",
+			Image = "rbxassetid://4483345998",
+			Time = 7
+		})
 	end    
 })
 
@@ -910,7 +910,7 @@ VisTab:AddToggle({
 	Default = false,
 	Callback = function(Value)
 		if Value then
-			loadstring(game:HttpGet("https://pastebin.com/raw/7jBG7Qa7"))()
+			loadstring(game:HttpGet("https://pastebin.com/raw/0VgCDN64"))()
 		else
 			_G.WRDESPEnabled = false
 		end
@@ -926,7 +926,7 @@ VisTab:AddToggle({
 })
 
 VisTab:AddToggle({
-	Name = "Names & Distance",
+	Name = "Names",
 	Default = false,
 	Callback = function(Value)
 		_G.WRDESPNames = Value
@@ -961,7 +961,18 @@ local MiscTab = Window:MakeTab({
 MiscTab:AddButton({
 	Name = "Unlock FPS",
 	Callback = function()
-		setfpscap(430)
+		if setfpscap then
+			setfpscap(430)
+		elseif set_fps_cap then
+			set_fps_cap(430)
+		else
+			OrionLib:MakeNotification({
+				Name = "Unlock FPS - Cookie Hub V2",
+				Content = "Your exploit is not supported setfpscap.",
+				Image = "rbxassetid://4483345998",
+				Time = 5
+			})	
+		end
   	end
 })
 
@@ -971,6 +982,29 @@ MiscTab:AddButton({
 		game.Players.LocalPlayer.Character.Spawned:Destroy()
 		game.Players.LocalPlayer.Character.Humanoid.Jump = true
   	end
+})
+
+_G.Levl = game.Players.LocalPlayer.CareerStatsCache.Level.Value
+_G.MenuName = game.Players.LocalPlayer.Name
+
+MiscTab:AddTextbox({
+	Name = "Menu Name",
+	Default = game.Players.LocalPlayer.Name,
+	TextDisappear = true,
+	Callback = function(Value)
+		_G.MenuName = Value
+		game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.PlrName.Text=_G.MenuName.." - Level: ".._G.Levl
+	end	  
+})
+
+MiscTab:AddTextbox({
+	Name = "Menu Level",
+	Default = game.Players.LocalPlayer.CareerStatsCache.Level.Value,
+	TextDisappear = true,
+	Callback = function(Value)
+		_G.Levl = Value
+		game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.PlrName.Text=_G.MenuName.." - Level: ".._G.Levl
+	end	  
 })
 
 MiscTab:AddDropdown({
