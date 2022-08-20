@@ -990,7 +990,7 @@ _G.MenuName = game.Players.LocalPlayer.Name
 MiscTab:AddTextbox({
 	Name = "Menu Name",
 	Default = game.Players.LocalPlayer.Name,
-	TextDisappear = true,
+	TextDisappear = false,
 	Callback = function(Value)
 		_G.MenuName = Value
 		game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.PlrName.Text=_G.MenuName.." - Level: ".._G.Levl
@@ -1000,7 +1000,7 @@ MiscTab:AddTextbox({
 MiscTab:AddTextbox({
 	Name = "Menu Level",
 	Default = game.Players.LocalPlayer.CareerStatsCache.Level.Value,
-	TextDisappear = true,
+	TextDisappear = false,
 	Callback = function(Value)
 		_G.Levl = Value
 		game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.PlrName.Text=_G.MenuName.." - Level: ".._G.Levl
