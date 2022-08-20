@@ -664,12 +664,7 @@ CombatTab:AddToggle({
 	Name = "Semi-Wallbang",
 	Default = false,
 	Callback = function(Value)
-		OrionLib:MakeNotification({
-			Name = "!WARNING!",
-			Content = "This function IS PATHCED DUE to BANS ON OUR TEST ACCOUNTS! WAIT FOR UNPATCH",
-			Image = "rbxassetid://4483345998",
-			Time = 7
-		})
+		
 	end    
 })
 
