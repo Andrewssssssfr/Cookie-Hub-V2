@@ -606,6 +606,8 @@ end
 	end
 })
 
+_G.AimPart = "Head"
+
 CombatTab:AddToggle({
 	Name = "Silent Aim",
 	Default = false,
@@ -616,12 +618,24 @@ local LocalPlayer = Players.LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 function ClosestPlayer()
     local MaxDist, Closest = math.huge
+	local Head
 	if Value then
 		for I,V in pairs(Players.GetPlayers(Players)) do
 			if V == LocalPlayer then continue end
 			if V.Team == LocalPlayer then continue end
 			if not V.Character then continue end
-			local Head = V.Character.FindFirstChild(V.Character, "Head")
+			if _G.AimPart == "Head" then
+				Head = V.Character.FindFirstChild(V.Character, "Head")
+			elseif _G.AimPart == "Torso" then
+				Head = V.Character.FindFirstChild(V.Character, "LowerTorso")
+			elseif _G.AimPart == "Random" then
+				local aimpartLol = math.random(1, 2)
+				if aimpartLol == 1 then
+					Head = V.Character.FindFirstChild(V.Character, "LowerTorso")
+				elseif aimpartLol == 2 then
+					Head = V.Character.FindFirstChild(V.Character, "Head")
+				end
+			end
 			if not Head then continue end
 			local Pos, Vis = CurrentCamera.WorldToScreenPoint(CurrentCamera, Head.Position)
 			if not Vis then continue end
@@ -644,7 +658,18 @@ MT.__namecall = newcclosure(function(self, ...)
     if Method == "FindPartOnRayWithIgnoreList" and not checkcaller() then
         local CP = ClosestPlayer()
         if CP and CP.Character and CP.Character.FindFirstChild(CP.Character, "Head") then
-            Args[1] = Ray.new(CurrentCamera.CFrame.Position, (CP.Character.Head.Position - CurrentCamera.CFrame.Position).Unit * 1000)
+			if _G.AimPart == "Head" then
+				Args[1] = Ray.new(CurrentCamera.CFrame.Position, (CP.Character.Head.Position - CurrentCamera.CFrame.Position).Unit * 1000)
+			elseif _G.AimPart == "Torso" then
+				Args[1] = Ray.new(CurrentCamera.CFrame.Position, (CP.Character.LowerTorso.Position - CurrentCamera.CFrame.Position).Unit * 1000)
+			elseif _G.AimPart == "Random" then
+				local aimpartLol = math.random(1, 2)
+				if aimpartLol == 1 then
+					Args[1] = Ray.new(CurrentCamera.CFrame.Position, (CP.Character.LowerTorso.Position - CurrentCamera.CFrame.Position).Unit * 1000)
+				elseif aimpartLol == 2 then
+					Args[1] = Ray.new(CurrentCamera.CFrame.Position, (CP.Character.Head.Position - CurrentCamera.CFrame.Position).Unit * 1000)
+				end
+			end
             return OldNC(self, unpack(Args))
         end
     end
@@ -700,6 +725,15 @@ CombatTab:AddToggle({
 				end
 			end
 		end
+	end    
+})
+
+CombatTab:AddDropdown({
+	Name = "Aim Part",
+	Default = "Head",
+	Options = {"Head", "Torso", "Random"},
+	Callback = function(Value)
+		_G.AimPart = Value
 	end    
 })
 
@@ -810,25 +844,6 @@ LPTab:AddButton({
 			hmd.WalkSpeed = 76
 		end)
   	end    
-})
-
-LPTab:AddToggle({
-	Name = "Fast Heal",
-	Default = false,
-	Callback = function(Value)
-		_G.FastHeal = Value
-		while _G.FastHeal do
-			if game.Players.LocalPlayer.NRPBS.Health.Value<=99 then
-				for _,v in pairs(game.Workspace.Debris:GetChildren())do
-					if v.Name=="DeadHP"then
-						v.CFrame=game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-						v.Transparency=1
-					end
-				end
-			end
-			wait(0.0000001)
-		end
-	end    
 })
 
 LPTab:AddToggle({
@@ -977,29 +992,6 @@ MiscTab:AddButton({
 		game.Players.LocalPlayer.Character.Spawned:Destroy()
 		game.Players.LocalPlayer.Character.Humanoid.Jump = true
   	end
-})
-
-_G.Levl = game.Players.LocalPlayer.CareerStatsCache.Level.Value
-_G.MenuName = game.Players.LocalPlayer.Name
-
-MiscTab:AddTextbox({
-	Name = "Menu Name",
-	Default = game.Players.LocalPlayer.Name,
-	TextDisappear = false,
-	Callback = function(Value)
-		_G.MenuName = Value
-		game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.PlrName.Text=_G.MenuName.." - Level: ".._G.Levl
-	end	  
-})
-
-MiscTab:AddTextbox({
-	Name = "Menu Level",
-	Default = game.Players.LocalPlayer.CareerStatsCache.Level.Value,
-	TextDisappear = false,
-	Callback = function(Value)
-		_G.Levl = Value
-		game:GetService("Players").LocalPlayer.PlayerGui.Menew.Main.PlrName.Text=_G.MenuName.." - Level: ".._G.Levl
-	end	  
 })
 
 MiscTab:AddDropdown({
