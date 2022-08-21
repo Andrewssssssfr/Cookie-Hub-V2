@@ -29,12 +29,6 @@ local Window = OrionLib:MakeWindow({Name = "Cookie Hub", HidePremium = true, Int
 local replicationstorage = game.ReplicatedStorage
 _G.infinjump = false
 
-function SwitchToKnife()
-    local N = game:GetService("VirtualInputManager")
-    N:SendKeyEvent(true, 51, false, game)
-    N:SendKeyEvent(false, 51, false, game)  
-end
-
 function infjump()
 	_G.infinjump = true
 	local Player = game:GetService("Players").LocalPlayer
@@ -475,7 +469,6 @@ CombatTab:AddToggle({
 	Default = false,
 	Callback = function(Value)
 		if Value then
-		SwitchToKnife()
                 game:GetService("ReplicatedStorage").wkspc.Status.RoundOver.Value = false
 local Farming = false
 local Hopped = false
