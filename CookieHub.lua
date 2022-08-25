@@ -675,22 +675,8 @@ MT.__namecall = newcclosure(function(self, ...)
     end
     return OldNC(self, ...)
 end)
-MT.__index = newcclosure(function(self, K)
-    if K == "Clips" then
-        return workspace.Map
-    end
-    return OldIDX(self, K)
-end)
 setreadonly(MT, true)
 	end
-})
-
-CombatTab:AddToggle({
-	Name = "Semi-Wallbang",
-	Default = false,
-	Callback = function(Value)
-		
-	end    
 })
 
 CombatTab:AddToggle({
@@ -726,6 +712,22 @@ CombatTab:AddToggle({
 			end
 		end
 	end    
+})
+
+CombatTab:AddButton({
+	Name = "Semi-Wallbang",
+	Callback = function()
+		local MT = getrawmetatable(game)
+		local OldIDX = MT.__index
+		setreadonly(MT, false)
+		MT.__index = newcclosure(function(self, K)
+		    if K == "Clips" then
+				return workspace.Map
+		    end
+		    return OldIDX(self, K)
+		end)
+		setreadonly(MT, true)
+  	end    
 })
 
 CombatTab:AddDropdown({
@@ -804,7 +806,7 @@ GMTab:AddButton({
 })
 
 GMTab:AddButton({
-	Name = "No Reload Time & Equip Time",
+	Name = "No Reload Time & No Equip Time",
 	Callback = function()
 		for i, v in pairs(replicationstorage.Weapons:GetDescendants()) do
 			if v.Name == "EquipTime" then
