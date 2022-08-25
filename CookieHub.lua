@@ -802,15 +802,15 @@ GMTab:AddButton({
        			v.Value = 20
    			end
 		end
-  	end    
+  	end
 })
 
 GMTab:AddButton({
-	Name = "No Reload Time & No Equip Time",
+	Name = "No Reload Time",
 	Callback = function()
 		for i, v in pairs(replicationstorage.Weapons:GetDescendants()) do
 			if v.Name == "EquipTime" then
-				v.Value = 0.0000001
+				v.Value = 0
 			end
 			if v.Name == "SelfDamage" then
 				v.Value = 0
@@ -819,7 +819,7 @@ GMTab:AddButton({
 				v.Value = 0
 			end
 		end
-  	end    
+  	end
 })
 
 local LPTab = Window:MakeTab({
