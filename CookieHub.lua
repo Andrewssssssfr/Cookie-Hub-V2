@@ -1019,3 +1019,5 @@ MiscTab:AddDropdown({
 		end
 	end    
 })
+
+game.ReplicatedStorage.Events.CoolNewRemote:FireServer("MouseButton1")
