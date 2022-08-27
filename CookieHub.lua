@@ -1087,26 +1087,36 @@ GMTab:AddToggle({
 	end    
 })
 
-GMTab:AddButton({
+GMTab:AddToggle({
 	Name = "No Recoil",
-	Callback = function()
-		for i, v in pairs(replicationstorage.Weapons:GetDescendants()) do
-			if v.Name == "RecoilControl" then
-				v.Value = 0
+	Default = false,
+	Callback = function(Value)
+		for i, v in pairs(game:GetService("ReplicatedStorage").Weapons:GetDescendants()) do
+			if v.Name == "RecoilControl" or v.Name == "Recoil" then
+				if Value then
+					v.Value = 0 
+				else
+					v.Value = 1
+				end
 			end
 		end
-  	end    
+	end    
 })
 
-GMTab:AddButton({
+GMTab:AddToggle({
 	Name = "No Spread",
-	Callback = function()
-		for i, v in pairs(replicationstorage.Weapons:GetDescendants()) do
-			if v.Name == "MaxSpread" then
-				v.Value = 0
+	Default = false,
+	Callback = function(Value)
+		for i, v in pairs(game:GetService("ReplicatedStorage").Weapons:GetDescendants()) do
+			if v.Name == "MaxSpread" or v.Name == "Spread" or v.Name == "SpreadControl" then
+				if Value then
+					v.Value = 0 
+				else
+					v.Value = 1
+				end
 			end
 		end
-  	end    
+	end    
 })
 
 GMTab:AddButton({
