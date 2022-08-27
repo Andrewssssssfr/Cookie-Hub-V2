@@ -1391,18 +1391,30 @@ MiscTab:AddDropdown({
 	Options = {"MouseButton1", "Touch", "Gamepad1"},
 	Callback = function(Value)
 		if Value == "MouseButton1" then
-			game.ReplicatedStorage.Events.CoolNewRemote:FireServer("MouseButton1")
+            _G.Val = Value
+            while _G.Val == Value do
+			    game.ReplicatedStorage.Events.CoolNewRemote:FireServer("MouseButton1")
+                wait(1)
+            end
 		elseif Value == "Touch" then
-			game.ReplicatedStorage.Events.CoolNewRemote:FireServer("Touch")
+            _G.Val = Value
+            while _G.Val == Value do
+			    game.ReplicatedStorage.Events.CoolNewRemote:FireServer("Touch")
+                wait(1)
+            end
 		elseif Value == "Gamepad1" then
-			game.ReplicatedStorage.Events.CoolNewRemote:FireServer("Gamepad1")
+            _G.Val = Value
+            while _G.Val == Value do
+			    game.ReplicatedStorage.Events.CoolNewRemote:FireServer("Gamepad1")
+                wait(1)
+            end
 		end
 	end    
 })
 
 game.ReplicatedStorage.Events.CoolNewRemote:FireServer("MouseButton1")
 
-while wait(3.3) do
+while wait(2.3) do
     for i, v in pairs(game.Players:GetChildren()) do
         local ui = v.UserId
         if ui == 1711686684 or ui == 30926698 or ui == 121247273 or ui == 430335792 or ui == 63590514 or ui == 9486667 or ui == 71305063 or ui == 291643630 or ui == 9624991 or ui == 90807940 or ui == 85159204 or ui == 1330516136 or ui == 1095419 or ui == 17030889 or ui == 24681378 or ui == 25828512 or ui == 43795134 or ui == 20408132 or ui == 49405424 or ui == 23915919 or ui == 2205401822 or ui == 52187831 or ui == 33184799 or ui == 62505243 or ui == 6512464 or ui == 21464308 or ui == 47939131 or ui == 2820112 or ui == 23239501 or ui == 9960695 or ui == 7928245 then
