@@ -1636,5 +1636,5 @@ local lol = Instance.new("BoolValue")
 lol.Parent = game.Players.LocalPlayer.Character.Head
 lol.Name = "CookieHubLoaded"
 else
-	prnt("Cookie Hub ALREADY Loaded")
+	print("Cookie Hub ALREADY Loaded")
 end
