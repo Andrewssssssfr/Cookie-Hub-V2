@@ -1050,7 +1050,7 @@ LPTab:AddButton({
 
 		wait(1)
 		hmd:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
-			hmd.WalkSpeed = 76
+			hmd.WalkSpeed = 90
 		end)
   	end    
 })
@@ -1063,6 +1063,43 @@ LPTab:AddToggle({
 			game:GetService("Players")["LocalPlayer"].PlayerGui.GUI.Client.Variables.thirdperson.Value = true
 		else
 			game:GetService("Players")["LocalPlayer"].PlayerGui.GUI.Client.Variables.thirdperson.Value = false
+		end
+	end    
+})
+
+local Noclipping = nil
+local Clip = nil
+
+function noclip()
+	Clip = false
+	wait(0.1)
+	local function NoclipLoop()
+		if Clip == false and game.Players.LocalPlayer.Character ~= nil then
+			for _, child in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+				if child:IsA("BasePart") and child.CanCollide == true and child.Name ~= floatName then
+					child.CanCollide = false
+				end
+			end
+		end
+	end
+	Noclipping = game:GetService('RunService').Stepped:Connect(NoclipLoop)
+end
+
+function clip()
+	if Noclipping then
+		Noclipping:Disconnect()
+	end
+	Clip = true
+end
+
+LPTab:AddToggle({
+	Name = "Noclip",
+	Default = false,
+	Callback = function(Value)
+		if Value then
+			noclip()
+		else
+			clip()
 		end
 	end    
 })
