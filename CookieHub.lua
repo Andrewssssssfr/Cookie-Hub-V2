@@ -1220,11 +1220,28 @@ MiscTab:AddToggle({
 	Callback = function(Value)
 		_G.APUB = Value
         while _G.APUB do
-            wait(2)
+            wait(0.01)
             if game.Workspace:FindFirstChild("Debris")then
                 if game.Workspace.Debris:FindFirstChild("Oddball")then
                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=
                     game.Workspace.Debris.Oddball.Ballnew.CFrame
+                end
+            end
+        end
+	end    
+})
+
+MiscTab:AddToggle({
+	Name = "Fast Heal",
+	Default = false,
+	Callback = function(Value)
+        _G.FastHeal = Value
+        while _G.FastHeal do
+			wait(0.001)
+            for _,v in pairs(game.Workspace.Debris:GetChildren())do
+                if v.Name=="DeadHP"then
+					v.Transparency=1
+                    v.CFrame=game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
                 end
             end
         end
@@ -1237,7 +1254,7 @@ MiscTab:AddToggle({
 	Callback = function(Value)
 		_G.AntiESP = Value
         while _G.AntiESP do
-            wait(1)
+            wait(0.01)
             if game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("Donkey")then
                 game.Players.LocalPlayer.Character.HumanoidRootPart.Donkey:Destroy()
             end
