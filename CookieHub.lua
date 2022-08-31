@@ -1198,7 +1198,7 @@ VisTab:AddToggle({
 			game:GetService("ReplicatedStorage").Events.Sunglasses:FireServer()
 			wait(0.2) 
 		end
-	end    
+	end
 })
 
 VisTab:AddButton({
