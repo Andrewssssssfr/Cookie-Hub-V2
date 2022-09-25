@@ -4,7 +4,7 @@ do local v0=0;local v1;local v2;local v3;local v4;local v5;local v6;local v7;loc
 
 elseif game.PlaceId == 9872472334 then
 
-    repeat wait() until game:IsLoaded()
+repeat wait() until game:IsLoaded()
 wait(0.2)
 
 Luazifier = {} 
@@ -249,37 +249,14 @@ MainTab:AddToggle({
 })
 
 local OPSection = MainTab:AddSection({
-	Name = "Player"
+	Name = "Others"
 })
 
-getgenv().WalkSpeed = 16
-
-game:GetService("RunService").RenderStepped:Connect(function()
-    pcall(function()
-        if getgenv().WalkSpeedToggle and game.Players.LocalPlayer.Character.Humanoid.MoveDirection.Magnitude > 0 then
-            game.Players.LocalPlayer.Character:TranslateBy(game.Players.LocalPlayer.Character.Humanoid.MoveDirection * getgenv().WalkSpeed/100)
-        end
-    end)
-end)
-
-MainTab:AddToggle({
-	Name = "WalkSpeed Toggle",
-	Default = false,
-	Callback = function(Value)
-        getgenv().WalkSpeedToggle = Value
-	end
-})
-
-MainTab:AddSlider({
-	Name = "WalkSpeed",
-	Min = 16,
-	Max = 200,
-	Default = 16,
-	Color = Color3.fromRGB(255,255,255),
-	Increment = 1,
-	Callback = function(Value)
-		getgenv().WalkSpeed = Value
-	end   
+MainTab:AddButton({
+	Name = "Reset",
+	Callback = function()
+		game:GetService("ReplicatedStorage").Events.Reset:FireServer()
+  	end    
 })
 
 MainTab:AddToggle({
@@ -322,10 +299,126 @@ MainTab:AddToggle({
 	end
 })
 
+local PlayerTab = Window:MakeTab({
+	Name = "Player",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = PlayerTab:AddSection({
+	Name = "Fast Movement"
+})
+
+getgenv().WalkSpeed = 16
+
+game:GetService("RunService").RenderStepped:Connect(function()
+    pcall(function()
+        if getgenv().WalkSpeedToggle and game.Players.LocalPlayer.Character.Humanoid.MoveDirection.Magnitude > 0 then
+            game.Players.LocalPlayer.Character:TranslateBy(game.Players.LocalPlayer.Character.Humanoid.MoveDirection * getgenv().WalkSpeed/100)
+        end
+    end)
+end)
+
+PlayerTab:AddToggle({
+	Name = "WalkSpeed Toggle",
+	Default = false,
+	Callback = function(Value)
+        getgenv().WalkSpeedToggle = Value
+	end
+})
+
+PlayerTab:AddSlider({
+	Name = "WalkSpeed",
+	Min = 16,
+	Max = 250,
+	Default = 16,
+	Color = Color3.fromRGB(11, 100, 255),
+	Increment = 1,
+	Callback = function(Value)
+		getgenv().WalkSpeed = Value
+	end   
+})
+
+PlayerTab:AddToggle({
+	Name = "JumpPower",
+	Default = false,
+	Callback = function(Value)
+		getgenv().JP = Value
+		if getgenv().JP then
+			local Player = game:GetService("Players").LocalPlayer
+			local humanoid = game.Players.LocalPlayer.Character.Humanoid
+
+			humanoid.UseJumpPower = getgenv().JP
+
+			humanoid.Jumping:Connect(function(isActive)
+				if getgenv().JP and isActive then
+					Player.Character.HumanoidRootPart.Velocity =  Player.Character.HumanoidRootPart.Velocity * Vector3.new(1,0,1) + Vector3.new(0,50,0)
+				end
+			end)
+		end
+	end
+})
+
+PlayerTab:AddToggle({
+	Name = "Infinite Jump",
+	Default = false,
+	Callback = function(Value)
+        _G.infinjump = Value
+		local Player = game:GetService("Players").LocalPlayer
+		local Mouse = Player:GetMouse()
+		Mouse.KeyDown:connect(function(k)
+			if _G.infinjump then
+				if k:byte() == 32 then
+					Humanoid = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+					Humanoid:ChangeState("Jumping")
+				end
+			end
+		end)
+	end
+})
+
+local Section = PlayerTab:AddSection({
+	Name = "Others"
+})
+
+PlayerTab:AddToggle({
+	Name = "Auto Slide",
+	Default = false,
+	Callback = function(Value)
+		getgenv().AutoSlide = Value
+        while getgenv().AutoSlide do
+			game:GetService("ReplicatedStorage").ModuleStorage.WeaponBase.Framework.BaseVM.Slide:Fire()
+			local ohString1 = "Crouch"
+			local ohBoolean2 = true
+			game:GetService("Players").LocalPlayer.PlayerScripts.Events.KeybindUsed:Fire(ohString1, ohBoolean2)
+			wait()
+		end
+	end
+})
+
+PlayerTab:AddToggle({
+	Name = "Auto Whistle",
+	Default = false,
+	Callback = function(Value)
+		getgenv().AutoWhistle = Value
+        while getgenv().AutoWhistle do
+			local ohString1 = "Whistle"
+			local ohBoolean2 = true
+			game:GetService("Players").LocalPlayer.PlayerScripts.Events.KeybindUsed:Fire(ohString1, ohBoolean2)
+			game:GetService("ReplicatedStorage").Events.Whistle:FireServer()
+			wait(5)
+		end
+	end
+})
+
 local VisTab = Window:MakeTab({
 	Name = "Visuals",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
+})
+
+local Section = VisTab:AddSection({
+	Name = "ESP"
 })
 
 local cam = workspace.CurrentCamera
@@ -381,7 +474,7 @@ VisTab:AddToggle({
 
 VisTab:AddColorpicker({
 	Name = "ESP Color",
-	Default = Color3.fromRGB(255, 0, 0),
+	Default = Color3.fromRGB(11, 100, 255),
 	Callback = function(Value)
 		getgenv().mptespcolour = Value
 	end	  
@@ -391,6 +484,21 @@ local FunTab = Window:MakeTab({
 	Name = "Fun",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
+})
+
+local Section = FunTab:AddSection({
+	Name = "Fun Features"
+})
+
+FunTab:AddBind({
+	Name = "Random Emote",
+	Default = Enum.KeyCode.Z,
+	Hold = false,
+	Callback = function()
+        local number = math.random(4)
+        local ohString1 = (number)
+        game:GetService("ReplicatedStorage").Events.Emote:FireServer(ohString1)
+	end    
 })
 
 FunTab:AddToggle({
@@ -424,7 +532,7 @@ FunTab:AddToggle({
 FunTab:AddTextbox({
 	Name = "Chat Spam Text",
 	Default = "Cookie Hub On Top",
-	TextDisappear = true,
+	TextDisappear = false,
 	Callback = function(Value)
 		getgenv().ChatSpamVal = Value
 	end	  
@@ -434,6 +542,10 @@ local MiscTab = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
+})
+
+local Section = MiscTab:AddSection({
+	Name = "Miscellaneous"
 })
 
 MiscTab:AddToggle({
