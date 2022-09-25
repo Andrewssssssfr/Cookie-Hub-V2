@@ -8,4 +8,6 @@ elseif game.PlaceId == 10320240572 then
 	loadstring(game:HttpGet('https://raw.githubusercontent.com/Andrewssssssfr/Cookie-Hub-V2/main/EasyRaceClicker.lua',true))()
 elseif game.PlaceId == 920587237 then
 	loadstring(game:HttpGet('https://raw.githubusercontent.com/Andrewssssssfr/Cookie-Hub-V2/main/AdoptMe.lua',true))()
+elseif game.PlaceId == 3260590327 then
+	   loadstring(game:HttpGet("https://raw.githubusercontent.com/Andrewssssssfr/Cookie-Hub-V2/main/TDS.lua"))()
 end
